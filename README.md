@@ -2,7 +2,7 @@
 
 Easier way to run freqtrade on Docker without having to download all the code base.
 
-Example of use would be to clone this repo in a VM running Ubuntu VM and run the docker command.
+Example of use would be to clone this repo in a VM running Ubuntu and run the docker command.
 
 ### Pre-requisites: docker and make installed 
 
