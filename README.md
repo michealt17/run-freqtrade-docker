@@ -38,11 +38,6 @@ make run \
     DB_FILE=tradesv3.dryrun.sqlite
 ```
 
-make run \
-    STRATEGY=BBRSI \
-    CONFIG_FILE=config2.json  \
-    DB_FILE=tradesv3.dryrun.sqlite
-
 ### 4.2) Run in production mode (dry run or not) - this will run the freqtrade bot on docker in the background
 ```bash
 make run-prod \
