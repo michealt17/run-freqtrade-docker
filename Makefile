@@ -4,6 +4,7 @@ DOCKER_PARAM = --rm
 DB_FILE      = tradesv3.dryrun.sqlite
 CONFIG_FILE  = config_dry.json
 NAME=freqtrade
+TIMERANGE=
 
 init: ## creates initial config files
 	./init_config.sh
@@ -13,6 +14,7 @@ run: ## basic docker command to run the bot
 		$(DOCKER_PARAM) \
 		--name ${NAME} \
 		-v /etc/timezone:/etc/timezone:ro \
+		-v ~/.freqtrade/user_data:/freqtrade/user_data \
 	 	-v ~/.freqtrade/$(CONFIG_FILE):/freqtrade/config.json \
 		-v ~/.freqtrade/$(DB_FILE):/freqtrade/$(DB_FILE) \
 		-v $(PWD)/strategies:/freqtrade/user_data/strategies \
@@ -28,7 +30,7 @@ run-prod: ## run in production in the background
 
 run-backtest: ## run backtests
 	make run \
-	PARAMS='backtesting --refresh-pairs-cached'
+	PARAMS='backtesting --timerange=$(TIMERANGE)'
 
 stop-prod: ## stop container that is running in production
 	docker stop freqtrade_prod
